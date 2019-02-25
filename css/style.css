@@ -1,0 +1,327 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* basic reset */
+
+/* universal selector */
+
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box; 
+}
+
+/* setting general properties - font for body, for inherit later */
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+
+    /* getting white space around webpage of body */
+    padding: 30px;
+}
+
+.header {
+    /* 95% viewport height */
+    height: 95vh;
+
+    /* linear-gradient :
+     to right(left to right), 
+     to right bottom, 
+     to right top ....
+     rgb - opacity
+     */
+    /* overlay gradient colors and image */
+    background-image: linear-gradient(
+        to right bottom,
+         rgba(126, 213, 111, 0.8),
+         rgba(40, 180, 133, 0.8)
+        ), 
+         url(../img/hero.jpg);
+
+    /* to fit element inside the box */
+    background-size: cover;
+
+    /* when changing the size of screen,the top of image stay the same (top-center-bottom)*/
+    background-position: top;
+    position: relative;
+
+    /* clip-path: cutting a part of images
+        - polygon: (x y, x y, x y) (degree,width)
+        - top left -> top right -> bottom right -> bottom left
+        - x: horizontal left->right
+        - y: vertical top left -> bottom left
+        *** https://bennettfeely.com/clippy/
+    */
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    
+}
+
+/* logo */
+
+.logo-box {
+    /* position absolute: stay in once place 
+        - set parent element to relative - "header"
+    */
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+
+}
+
+/* for text in banner */
+
+.text-box {
+    /* the header element is parent with relative */
+    position: absolute;
+    /* text-align: center;  doesnt work */
+
+    /* position the box now */
+    /* this will make the box not right in the center */
+    top: 50%;
+    left: 50%;
+
+    /*  transform will measure the length of TEXT on balance,
+    on axis and epsilon  
+    -50%: shifted half of the width to the left side
+    -50%: shifted half of the height to the top
+    */
+    transform: translate(-50%, -50%);
+
+    /* cause its inline-block so considering it as a text, now we can use text-align
+        - just works with button   
+    */
+    text-align: center;
+
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    /* preventing animation shaking */
+    backface-visibility: hidden;
+
+}
+
+
+.heading-primary-main {
+    /* display block to make the span tag a line breaks before and after */
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    /* call the animation name here  */
+    animation-name: moveInLeft;
+
+    /* how long do you want animation */
+    animation-duration: 1s;
+
+    /* - built in function for animation */
+    animation-timing-function: ease-out; 
+    /* animation-iteration-count: 3; - how many times animation play */
+    /* animation-delay: 3s - stop before play */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+/* animation for heading text */
+
+/* for heading-primary-main */
+@keyframes moveInLeft {
+     /* initial state for animation */
+    0% {
+        /* invisible */
+        opacity: 0;
+        /* translateX() horizontal direction - negative: move from left */
+        transform: translateX(-100px);
+    }
+    
+    /* rotate() : animation rotate by degree*/
+    /* 60% {
+        transform: rotate(180deg);
+    } */
+
+    /* middle state, can be 50, 70, 80 ... up to u */
+    80% {
+        transform: translateX(10px);
+    }
+    /* finished state */
+    100% {
+        /* visible */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* for heading-primary-sub */
+@keyframes moveInRight {
+     /* initial state for animation */
+    0% {
+        /* invisible */
+        opacity: 0;
+        /* horizontal direction - positive : move from right*/
+        transform: translateX(100px);
+    }
+    /* middle state, can be 50, 70, 80 ... up to u */
+    80% {
+        transform: translateX(-10px);
+    }
+    /* finished state */
+    100% {
+        /* visible */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInButton {
+     /* initial state for animation */
+    0% {
+        /* invisible */
+        opacity: 0;
+        /*  translateY(): vertical/epsilon direction - 
+        positive : move up
+        negative: move down
+        */
+        transform: translateY(30px);
+    }
+    /* middle state, can be 50, 70, 80 ... up to u */
+    /* 80% {
+        transform: translateX(-10px);
+    } */
+    /* finished state */
+    100% {
+        /* visible */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* button - styling */
+
+/* pseudo classes
+    - link:
+    - visited: see that someone clicked already
+    - hover
+    - active
+*/
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px; 
+
+    /* display: inline-block: cause btn is same div with h1, so this will set width & height for btn */
+    display: inline-block;
+    border-radius: 100px;
+    /* animate the element, in the initial state
+        - all: hover & active
+    */
+    transition: all .2s;
+    position: relative;
+    
+
+}
+
+/* hover state */
+.btn:hover {
+    /* transform is to move element 
+    - translateX: left/right horizontal
+    - translateY: top/bottom vertical
+    - negative value : move up 
+    - positve value : move down 
+
+    */
+    transform: translateY(-3px);
+    /* box-shadow : X(l-right) epsilon(top-btm) blur color */
+    box-shadow: 0 10px 20px rgb(0, 0, 0, .2) ;
+    
+}
+
+/* click state - active */
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(0, 0, 0, .2);
+}
+
+
+.btn-white {
+    background-color: white;
+    color: #777;
+}
+
+/* ::after - adding virtual element right after the original element*/
+.btn::after {
+    /* always specify elements */
+    content: "";
+    display: inline-block;
+    /* same size with original */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+
+    /* the original btn is position relative */
+    position: absolute;
+    /* top & left 0 : same position with org */
+    top:0;
+    left: 0;
+
+    /* z-index: define position of element:
+    - negative: behind
+    -positive : top
+    */
+    z-index: -1;
+
+    /* this is initial state of btn::after */
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+/* the after element for hover - we want it bigger when hover */
+.btn:hover::after {
+    /* scale make it bigger than the orginal 
+    - scale()
+    - scaleX()
+    -scaleY()
+
+    */
+    transform: scaleX(1.4) scaleY(1.6);
+    /* set the button invisible */
+    opacity: 0;
+
+}
+
+.btn-animated {
+
+    /* name - duration - function - delay */
+    animation: moveInButton .5s ease-out .75s;
+
+    /* the 0% not start  */
+    animation-fill-mode: backwards;
+}
