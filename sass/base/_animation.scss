@@ -1,0 +1,72 @@
+/* animation for heading text */
+
+/* for heading-primary-main */
+@keyframes moveInLeft {
+    /* initial state for animation */
+   0% {
+       /* invisible */
+       opacity: 0;
+       /* translateX() horizontal direction - negative: move from left */
+       transform: translateX(-10rem);
+   }
+   
+   /* rotate() : animation rotate by degree*/
+   /* 60% {
+       transform: rotate(180deg);
+   } */
+
+   /* middle state, can be 50, 70, 80 ... up to u */
+   80% {
+       transform: translateX(1rem);
+   }
+   /* finished state */
+   100% {
+       /* visible */
+       opacity: 1;
+       transform: translate(0);
+   }
+}
+
+/* for heading-primary-sub */
+@keyframes moveInRight {
+    /* initial state for animation */
+   0% {
+       /* invisible */
+       opacity: 0;
+       /* horizontal direction - positive : move from right*/
+       transform: translateX(10rem);
+   }
+   /* middle state, can be 50, 70, 80 ... up to u */
+   80% {
+       transform: translateX(-1rem);
+   }
+   /* finished state */
+   100% {
+       /* visible */
+       opacity: 1;
+       transform: translate(0);
+   }
+}
+
+@keyframes moveInButton {
+    /* initial state for animation */
+   0% {
+       /* invisible */
+       opacity: 0;
+       /*  translateY(): vertical/epsilon direction - 
+       positive : move up
+       negative: move down
+       */
+       transform: translateY(3rem);
+   }
+   /* middle state, can be 50, 70, 80 ... up to u */
+   /* 80% {
+       transform: translateX(-10px);
+   } */
+   /* finished state */
+   100% {
+       /* visible */
+       opacity: 1;
+       transform: translate(0);
+   }
+}
