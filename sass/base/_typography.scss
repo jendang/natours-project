@@ -1,0 +1,53 @@
+
+@import "../abstracts/variables";
+
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: $color-grey-dark;
+    /* getting white space around webpage of body */
+    padding: 3rem;
+    
+}
+
+/* for text in banner */
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    margin-bottom: 6rem;
+    /* preventing animation shaking */
+    backface-visibility: hidden;
+
+    // sass here 
+    &--main {
+        /* display block to make the span tag a line breaks before and after */
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+    
+        /* call the animation name here  */
+        animation-name: moveInLeft;
+    
+        /* how long do you want animation */
+        animation-duration: 1s;
+    
+        /* - built in function for animation */
+        animation-timing-function: ease-out; 
+        /* animation-iteration-count: 3; - how many times animation play */
+        /* animation-delay: 3s - stop before play */
+    }
+    
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        animation-name: moveInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+    }
+}

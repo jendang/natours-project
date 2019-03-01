@@ -1,0 +1,112 @@
+/* button - styling */
+
+/* pseudo classes :, pseudo elements ::
+    - link:
+    - visited: see that someone clicked already
+    - hover
+    - active
+*/
+
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem; 
+    
+        /* display: inline-block: cause btn is same div with h1, so this will set width & height for btn */
+        display: inline-block;
+        border-radius: 10rem;
+        /* animate the element, in the initial state
+            - all: hover & active
+        */
+        transition: all .2s;
+        position: relative;
+        font-size: 1.6rem;
+    }
+    /* hover state */
+    &:hover {
+        /* transform is to move element 
+        - translateX: left/right horizontal
+        - translateY: top/bottom vertical
+        - negative value : move up 
+        - positve value : move down 
+    
+        */
+        transform: translateY(-3px);
+        /* box-shadow : X(l-right) epsilon(top-btm) blur color */
+        // box-shadow: 0 1rem 2rem rgb($color-black, .2) ;
+        
+        /* the after element for hover - we want it bigger when hover */
+        &::after {
+            /* scale make it bigger than the orginal 
+            - scale()
+            - scaleX()
+            -scaleY()
+        
+            */
+            transform: scaleX(1.4) scaleY(1.6);
+            /* set the button invisible */
+            opacity: 0;
+        
+        }
+
+    }
+    
+    
+    /* click state - active */
+    &:active {
+        transform: translateY(-1px);
+        // box-shadow: 0 .5rem 1rem rgb($color-black, .2);
+    }
+    
+    
+    &--white {
+        background-color:$color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+
+    }
+    
+    /* ::after - adding virtual element right after the original element*/
+    &::after {
+        /* always specify elements */
+        content: "";
+        display: inline-block;
+        /* same size with original */
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+    
+        /* the original btn is position relative */
+        position: absolute;
+        /* top & left 0 : same position with org */
+        top:0;
+        left: 0;
+    
+        /* z-index: define position of element:
+        - negative: behind
+        -positive : top
+        */
+        z-index: -1;
+    
+        /* this is initial state of btn::after */
+        transition: all .4s;
+    }
+    
+    
+    
+    
+    
+    &--animated {
+    
+        /* name - duration - function - delay */
+        animation: moveInButton .5s ease-out .75s;
+    
+        /* the 0% not start  */
+        animation-fill-mode: backwards;
+    }
+}
