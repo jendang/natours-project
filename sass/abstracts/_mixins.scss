@@ -1,0 +1,10 @@
+//clearing the float to set height of elements
+@mixin clearfix {
+    //pseudo element
+    &::after {
+        //compulsory when using pseudo elements
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
