@@ -1,0 +1,19 @@
+@import "../abstracts/variables";
+
+
+.row {
+
+    max-width: $grid-width;
+    background-color: #eee;
+
+    // center a block element inside a block element
+    // in this case, the row(block) will be centered in the browser
+    margin: 0 auto;
+
+    //.row:not(): not select last child
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+
+}
