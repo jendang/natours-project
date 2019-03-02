@@ -4,7 +4,7 @@
 .row {
 
     max-width: $grid-width;
-    background-color: #eee;
+    // background-color: #eee;
 
     // center a block element inside a block element
     // in this case, the row(block) will be centered in the browser
@@ -26,7 +26,7 @@
     [class^="col-"]{
         //all cols has same background color and float and gutter 
 
-        background-color: orange;
+        // background-color: orange;
         float: left;
     
         &:not(:last-child){
