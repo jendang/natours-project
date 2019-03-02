@@ -1,5 +1,5 @@
 @import "../abstracts/variables";
-
+@import "../abstracts/mixins";
 
 .row {
 
@@ -14,6 +14,62 @@
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
     }
+
+    //clear the float between elements *** 
+    //in this case the float between rows
+    // this clearfix is written in mixins
+    @include clearfix;
+
+    //declare the attribute for class so we do not need repeat many same steps
+    // all class START/BEGINNING with "col-"
+    //*** $=: END ,  *=: INCLUDE/CONTAIN
+    [class^="col-"]{
+        //all cols has same background color and float and gutter 
+
+        background-color: orange;
+        float: left;
+    
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+    
+        }
+
+    }
+
+    //style the cols
+    .col-1-of-2 {
+        //calc() function to calculate the width of one col-1-of-2
+        // using SASS var in calc function #{varName}
+        width: calc((100% - #{$gutter-horizontal}) / 2 );
+
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+        
+    }
+
+    .col-2-of-3 {
+        width: calc(((100% - 2 * #{$gutter-horizontal}) / 3) * 2 + #{$gutter-horizontal});
+        
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+        
+    }
+    
+    .col-2-of-4 {
+        width: calc((2 * (100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+        
+    }
+    
+    .col-3-of-4 {
+        width: calc((3 *(100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
+        
+    }
+    
+
 
 
 }
