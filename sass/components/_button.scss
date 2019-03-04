@@ -70,6 +70,16 @@
         }
 
     }
+
+    &--green {
+        background-color:$color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-white;
+        }
+
+    }
     
     /* ::after - adding virtual element right after the original element*/
     &::after {
