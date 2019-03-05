@@ -1,0 +1,75 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+
+        //for moz support
+        -webkit-shape-outside:circle(50% at 50% 50%);
+        // has to floated, height, width, first 50% is diameter
+        //contents float outside of the shape
+        shape-outside: circle(50% at 50% 50%);
+
+        // to make a shape circle
+        clip-path: circle(50% at 50% 50%);
+
+        //space between contents and shape, then skew the pic straight again
+        transform: translateX(-3rem) skewX(12deg);
+        position: relative;
+    }
+    
+    &__img {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        //fixing the translate
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        //FILTER - make it blur and darker (< 100% darker, >100% brighter)
+        filter: blur(3px) brightness(80%);
+        
+    }
+
+    &__caption {
+        //set this on top of image
+        position: absolute;
+        top:50%;
+        left: 50%;
+
+        //20% is moved the text down, later when hover it goes up
+        transform: translate(-50%,20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem; 
+        text-align:center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+    
+    &:hover &__caption {
+        opacity: 1;
+        //make the text move up when hover
+        transform: translate(-50%, -50%) ;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+        
+    }
+
+
+}
