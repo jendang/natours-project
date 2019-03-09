@@ -9,23 +9,49 @@
     font-size: $default-font-size;
     transform: skewX(-12deg);
 
+    @include respond(tab-port){
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone){
+    
+        transform: skewX(0)
+    }
+
     &__shape {
         width: 15rem;
         height: 15rem;
         float: left;
+        overflow: hidden;
+        border-radius: 50%;  
+        
+        
+        //for safari
+        @supports (clip-path: polygon(0 0)) or (webkit-clip-path: polygon(0 0)){
+            // to make a shape circle
+            // clip-path: circle(50% at 50% 50%);
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            
+            //for moz support
+            -webkit-shape-outside:circle(50% at 50% 50%);
+            // has to floated, height, width, first 50% is diameter
+            //contents float outside of the shape
+            shape-outside: circle(50% at 50% 50%);
+            border-radius: 50%;
+        }
 
-        //for moz support
-        -webkit-shape-outside:circle(50% at 50% 50%);
-        // has to floated, height, width, first 50% is diameter
-        //contents float outside of the shape
-        shape-outside: circle(50% at 50% 50%);
-
-        // to make a shape circle
-        clip-path: circle(50% at 50% 50%);
 
         //space between contents and shape, then skew the pic straight again
         transform: translateX(-3rem) skewX(12deg);
         position: relative;
+
+
+        @include respond(phone){
+            transform: translateX(-3rem) skewX(0)
+        }
     }
     
     &__img {
@@ -69,6 +95,9 @@
     &__text {
         transform: skewX(12deg);
         
+        @include respond(phone){
+            transform: skewX(0)
+        }
     }
 
 

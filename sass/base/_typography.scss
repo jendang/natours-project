@@ -8,8 +8,7 @@ body {
     font-size: $default-font-size;
     line-height: 1.7;
     color: $color-grey-dark;
-    /* getting white space around webpage of body */
-    padding: 3rem;
+    
     
 }
 
@@ -20,7 +19,7 @@ body {
     margin-bottom: 6rem;
     /* preventing animation shaking */
     backface-visibility: hidden;
-
+    
     // sass here 
     &--main {
         /* display block to make the span tag a line breaks before and after */
@@ -39,6 +38,12 @@ body {
         animation-timing-function: ease-out; 
         /* animation-iteration-count: 3; - how many times animation play */
         /* animation-delay: 3s - stop before play */
+
+        @include respond (phone) {
+            letter-spacing: 1rem;
+            font-size: 4rem;
+        }
+
     }
     
     &--sub {
@@ -49,6 +54,12 @@ body {
         animation-name: moveInRight;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+
+        @include respond (phone) {
+            letter-spacing: .5rem;
+            // font-size: 1.5rem;
+        }
+
     }
 }
 
@@ -71,6 +82,14 @@ body {
     color: transparent;
     letter-spacing: .2rem;
     transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size: 3rem;
+    }
+
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
 
     &:hover {
         //skew: moving X cross , scale: make it bigger
