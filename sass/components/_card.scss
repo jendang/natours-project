@@ -169,7 +169,11 @@
 
 
 
-    @include respond (tab-port) {
+    // @include respond (tab-port) {
+        // for the mobile divices such as ipad, tablet, phones
+    @media only screen and (max-width: 56.25em),
+            only screen and (hover:none) {
+
         height: auto;
         border-radius: 3px;
         background-color: $color-white;
@@ -185,7 +189,7 @@
                 clip-path: polygon(0 15%, 100% 0, 100% 100%,0 100% )
 
             }
-
+ 
         }
         
         &:hover &__side--front {
